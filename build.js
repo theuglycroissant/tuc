@@ -106,6 +106,6 @@ copyPromise
 		});
 	})
 	.then( () => {
-		fs.writeFileSync(path.join(__dirname, "dist") + '/tags.json', JSON.stringify(tags));
+		fs.writeFileSync(distDir + '/tags.json', JSON.stringify(tags));
 	})
 	.catch(err => console.log(err));
