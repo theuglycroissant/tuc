@@ -1,0 +1,13 @@
+<html>
+<body>
+	<ul>
+	<% for (var id in directories.recipe) { %>
+		<li>
+		<a href="<%= directories.recipe[id].link %>">
+		<%= directories.recipe[id].title %>
+		</a>
+	</li>
+	<% } %>
+	</ul>
+</body>
+</html>

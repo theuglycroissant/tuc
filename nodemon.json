@@ -1,0 +1,4 @@
+{
+	"watch": ["src", "templates", "build.js"],
+	"ext": "js css scss yml yaml ejs json html"
+}

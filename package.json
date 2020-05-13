@@ -1,0 +1,27 @@
+{
+  "name": "tuc_2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+	"start": "node host.js",
+    "build": "node build.js",
+    "dev": "nodemon --exec 'node build.js && node host.js'"
+  },
+  "author": "Thomas Chaplin",
+  "license": "MIT",
+  "dependencies": {
+    "ejs": "^3.1.2",
+    "fs-extra": "^9.0.0",
+    "glob-promise": "^3.4.0",
+    "path": "^0.12.7",
+    "replace-ext": "^2.0.0",
+    "sass": "^1.26.5",
+    "yaml": "^1.9.2"
+  },
+  "devDependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.3"
+  }
+}
