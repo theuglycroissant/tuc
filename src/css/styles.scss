@@ -12,6 +12,7 @@ $dividerSpacing: var(--dividerSpacing);
 $mainGridGap: var(--mainGridGap);
 $minimumPadding: var(--minimumPadding);
 $mainPageWidth: min( calc( 100% - 2 * #{$minimumPadding} ) , max(60%, 1200px));
+$navHeight: 30px;
 
 body {
 	background-color: $tucBack;
@@ -48,16 +49,21 @@ body {
 
 	nav {
 		position: absolute;
+		width: 450px;
+		height: 30px;
 		display: flex;
 		align-items: center;
+		justify-content: space-around;
 		right: 0;
-		top: calc(25% - 16px);
+		top: calc(25% - 15px);
 		background-color: rgba($midGrey, 0.2);
 
 		.nav_item {
 			display: inline-block;
 			color: $textWhite;
-			padding: 5px 35px;
+			padding-left: 10px;
+			padding-right: 10px;
+
 			a {
 				text-decoration: none;
 				color: inherit;
