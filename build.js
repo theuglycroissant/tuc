@@ -18,6 +18,8 @@ function directoryEntry(object, link) {
 	return({
 		title: object.title,
 		directory: object.directory,
+		card_photo: object.card_photo,
+		description: object.description,
 		link: link
 	})
 }
@@ -46,16 +48,27 @@ copyPromise
 	.then( filelist => {
 		let renderPromises = [];
 		filelist.forEach(filename => {
-			renderPromises.push(myRender({ file: filename }));
+			// If partial then just tell the next process to delete
+			if(path.basename(filename).charAt(0) == '_') {
+				renderPromises.push( Promise.resolve({partial: true, filename}) );
+			} else {
+				renderPromises.push(myRender({ file: filename }));
+			}
 		});
 		return Promise.all(renderPromises);
 	})
 	.then( results => {
 		results.forEach( processed => {
-			let inFilename = processed.stats.entry
-			let outFilename = replaceExt(inFilename, '.css');
-			fs.writeFile(outFilename, processed.css);
-			fs.remove(inFilename);
+			if(processed.partial) {
+				// Remove partials
+				fs.remove(processed.filename);
+			} else {
+				// Write processed scss to file and remove old files
+				let inFilename = processed.stats.entry
+				let outFilename = replaceExt(inFilename, '.css');
+				fs.writeFile(outFilename, processed.css);
+				fs.remove(inFilename);
+			}
 		})
 	})
 	.catch(err => console.log(err));
