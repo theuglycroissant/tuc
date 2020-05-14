@@ -1,3 +1,16 @@
 title: The Ugly Croissant
 directory: index
 template: index
+categories:
+  - title: Cakes
+    image: /recipes/01/cake_square.jpg
+    link: /search.html?tag=cake
+  - title: Cookies
+    image: /assets/cookies.jpeg
+    link: /search.html?tag=cookie
+  - title: Bread
+    image: /assets/bread.jpeg
+    link: /search.html?tag=bread
+  - title: Tarts
+    image: /recipes/5a/square_pie.jpeg
+    link: /search.html?tag=tart

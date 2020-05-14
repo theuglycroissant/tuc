@@ -1,6 +1,9 @@
 template: default
 directory: recipe
-title: Lemon Meringue
+card_photo: /recipes/5a/square_pie.jpeg
+title: Lemon Meringue Pie
+description: |
+  Sharp curd with a sweet aquafaba meringue in a crisp pastry shell.
 tags:
   - Tart
   - Aquafaba

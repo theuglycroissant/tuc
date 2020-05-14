@@ -1,12 +1,17 @@
 <%- include('header') %>
-	<div class="divider">
+	<div class="category_card_grid">
+		<% for (var id in categories) { %>
+			<%- include('category_card', categories[id]) -%>
+		<% } %>
+	</div>
+	<div class="spaced animated divider">
 		<div class="divider_arm"></div>
 		<h2>Featured Recipes</h2>
 		<div class="divider_arm"></div>
 	</div>
 	<div class="recipe_card_grid">
-	<% for (var id in directories.recipe) { %>
-		<%- include('recipe_card', {recipe: directories.recipe[id]}) %>
-	<% } %>
+		<% for (var id in directories.recipe) { %>
+			<%- include('recipe_card', directories.recipe[id]) -%>
+		<% } %>
 	</div>
 <%- include('footer') %>

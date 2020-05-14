@@ -1,0 +1,9 @@
+@media only screen and (max-width: 600px) {
+	:root{
+		--minimumPadding: 10px;
+	}
+
+	.category_card_grid{
+		grid-template-columns: 1fr 1fr;
+	}
+}
