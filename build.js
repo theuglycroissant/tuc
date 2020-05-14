@@ -27,6 +27,7 @@ function directoryEntry(object, link) {
 function addTags(object, link) {
 	if(!object.tags) { return }
 	object.tags.forEach( tagName => {
+		tagName = tagName.toLowerCase();
 		if( !tags[tagName] ) {
 			tags[tagName] = [];
 		}

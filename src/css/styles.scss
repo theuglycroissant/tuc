@@ -5,8 +5,10 @@
 :root{
 	--mainGridGap: 20px;
 	--minimumPadding: 20px;
+	--dividerSpacing: 30px;
 }
 
+$dividerSpacing: var(--dividerSpacing);
 $mainGridGap: var(--mainGridGap);
 $minimumPadding: var(--minimumPadding);
 $mainPageWidth: min( calc( 100% - 2 * #{$minimumPadding} ) , max(60%, 1200px));
@@ -15,6 +17,59 @@ body {
 	background-color: $tucBack;
 	padding: 0;
 	margin: 0;
+}
+
+.nav_holder {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	margin-bottom: $dividerSpacing;
+	position: relative;
+
+	.logo_preline, .logo_postline {
+		width: 10%;
+		content: '';
+		height: 3px;
+		background-color: white;
+	}
+
+	.logo_holder {
+		width: 40%;
+		padding: 0 0 0 $minimumPadding;
+
+		img {
+			width:100%;
+		}
+	}
+	
+	.logo_postline {
+		width: 50%;
+	}
+
+	nav {
+		position: absolute;
+		display: flex;
+		align-items: center;
+		right: 0;
+		top: calc(25% - 16px);
+		background-color: rgba($midGrey, 0.2);
+
+		.nav_item {
+			display: inline-block;
+			color: $textWhite;
+			padding: 5px 35px;
+			a {
+				text-decoration: none;
+				color: inherit;
+			}
+		}
+
+		.nav_padder {
+			width: 30px;
+			height: 0.5px;
+			background-color: $textWhite;
+		}
+	}
 }
 
 @keyframes divider_arm_load {
@@ -70,7 +125,7 @@ body {
 	align-items:center;
 	
 	&.spaced {
-		margin:30px 0;
+		margin: $dividerSpacing 0;
 	}
 
 	.divider_arm {
