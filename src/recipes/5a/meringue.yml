@@ -1,7 +1,8 @@
 template: default
-filetype: recipe
+directory: recipe
 title: Lemon Meringue
 tags:
   - Tart
   - Aquafaba
   - Vegan
+  - Lemon

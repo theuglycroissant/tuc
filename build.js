@@ -14,17 +14,21 @@ const templateDir = path.join(__dirname, "templates");
 
 let tags = {};
 
+function directoryEntry(object, link) {
+	return({
+		title: object.title,
+		directory: object.directory,
+		link: link
+	})
+}
+
 function addTags(object, link) {
 	if(!object.tags) { return }
 	object.tags.forEach( tagName => {
 		if( !tags[tagName] ) {
 			tags[tagName] = [];
 		}
-		tags[tagName].push({
-			title: object.title,
-			filetype: object.filetype,
-			link: link
-		})
+		tags[tagName].push(directoryEntry(object, link));
 	})
 }
 
@@ -73,15 +77,12 @@ copyPromise
 				contents: jsonContents
 			});
 			// Check if recipe, then we have to add tags and to directory
-			if( jsonContents.filetype !== 'index') {
+			if( jsonContents.directory !== 'index') {
 				let link = filenameToLink(newFilename);
-				if(!directories[jsonContents.filetype]) {
-					directories[jsonContents.filetype] = [];
+				if(!directories[jsonContents.directory]) {
+					directories[jsonContents.directory] = [];
 				}
-				directories[jsonContents.filetype].push({
-					title: jsonContents.title,
-					link: link
-				});
+				directories[jsonContents.directory].push(directoryEntry(jsonContents, link));
 				addTags(jsonContents, link);
 			}
 		});
@@ -90,8 +91,8 @@ copyPromise
 			if( !item.contents.template ) { return }
 			let templatePath = templateDir + '/' + item.contents.template + '.ejs';
 			if( !fs.existsSync(templatePath) ) { return }
-			// Add directories if filetype is index
-			if( item.contents.filetype == 'index' ) {
+			// Add directories if directory is index
+			if( item.contents.directory == 'index' ) {
 				item.contents.directories = directories;
 			}
 			// Render contents with template

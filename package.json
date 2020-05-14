@@ -5,7 +5,7 @@
   "main": "build.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-	"start": "node host.js",
+    "start": "node host.js",
     "build": "node build.js",
     "dev": "nodemon --exec 'node build.js && node host.js'"
   },

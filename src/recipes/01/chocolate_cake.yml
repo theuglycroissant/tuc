@@ -1,7 +1,11 @@
 template: default
-filetype: recipe
+directory: recipe
 title: Chocolate Celebration Cake
 tags:
   - Cake
   - Chocolate
   - Vegan
+ingredients:
+  - Flour
+method:
+  - Mix the flour
