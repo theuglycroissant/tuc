@@ -1,11 +1,17 @@
 template: default
 directory: recipe
 title: Chocolate Celebration Cake
+card_photo: recipes/01/cake_square.jpg
+description: |
+  A really yummy chocolate cake.
+  With Cointreau truffles.
 tags:
   - Cake
   - Chocolate
   - Vegan
 ingredients:
-  - Flour
+  - For the meringue:
+    - Aquafaba
+    - Hope
 method:
   - Mix the flour

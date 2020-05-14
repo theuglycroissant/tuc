@@ -1,13 +1,12 @@
-<html>
-<body>
-	<ul>
+<%- include('header') %>
+	<div class="divider">
+		<div class="divider_arm"></div>
+		<h2>Featured Recipes</h2>
+		<div class="divider_arm"></div>
+	</div>
+	<div class="recipe_card_grid">
 	<% for (var id in directories.recipe) { %>
-		<li>
-		<a href="<%= directories.recipe[id].link %>">
-		<%= directories.recipe[id].title %>
-		</a>
-	</li>
+		<%- include('recipe_card', {recipe: directories.recipe[id]}) %>
 	<% } %>
-	</ul>
-</body>
-</html>
+	</div>
+<%- include('footer') %>
