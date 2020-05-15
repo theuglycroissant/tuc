@@ -1,6 +1,14 @@
 <%
-	var short_desc = description.substring(0, Math.min(description.length, 97))+"..."
-
+	var short_desc = "";
+	var desc_length = 0;
+	splitDesc = description.split(" ");
+	splitDesc.forEach( function(word) {
+		if(word.length + desc_length <= 96) {
+			short_desc += word + " ";
+			desc_length += word.length;
+		}
+	});
+	short_desc += "..."
 %>
 <div class="recipe_card" id="<%=link %>">
 	<div class="recipe_card_img_holder">
