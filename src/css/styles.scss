@@ -4,7 +4,7 @@
 
 :root{
 	--mainGridGap: 20px;
-	--minimumPadding: 20px;
+	--minimumPadding: 30px;
 	--dividerSpacing: 30px;
 }
 
@@ -12,21 +12,36 @@ $dividerSpacing: var(--dividerSpacing);
 $mainGridGap: var(--mainGridGap);
 $minimumPadding: var(--minimumPadding);
 $mainPageWidth: min( calc( 100% - 2 * #{$minimumPadding} ) , max(60%, 1200px));
+$mainArticleWidth: min( calc( 100% - 2 * #{$minimumPadding} ), calc(800px + 0.2 * (100vw - 800px)));
 $navHeight: 30px;
 $hoverTime: 0.5s;
 $loadinTime: 1.5s;
 $standardBoxShadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 $softBoxShadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+$sansSerifFont: 'Livvic', sans-serif;
+$serifFont: 'Arapey', serif;
 
 body {
 	background-color: $tucBack;
 	padding: 0;
 	margin: 0;
+	font-family: $serifFont;
+}
+
+p,span {
+	font-family: $sansSerifFont;
+}
+
+%headings {
+	font-weight: normal;
+}
+
+.hidden {
+	display: none;
 }
 
 .nav_holder {
 	display: flex;
-	width: 100%;
 	align-items: center;
 	margin-bottom: $dividerSpacing;
 	position: relative;
@@ -39,7 +54,7 @@ body {
 	}
 
 	.logo_holder {
-		width: 40%;
+		width: min(500px, 40%);
 		padding: 0 0 0 $minimumPadding;
 
 		img {
@@ -48,13 +63,13 @@ body {
 	}
 	
 	.logo_postline {
-		width: 50%;
+		width: max(50%, calc( 90% - 500px ));
 	}
 
 	nav {
 		position: absolute;
-		width: 450px;
-		height: 30px;
+		width: 425px;
+		height: $navHeight;
 		display: flex;
 		align-items: center;
 		justify-content: space-around;
@@ -68,15 +83,17 @@ body {
 			color: $textWhite;
 			padding-left: 10px;
 			padding-right: 10px;
-			transition: color $hoverTime;
+			font-family: $sansSerifFont;
+
 			&:hover {
+				transition: color $hoverTime;
 				color: $tucAccent;
 			}
 		}
 
 		.nav_padder {
 			width: 30px;
-			height: 0.5px;
+			height: 1pt;
 			background-color: $textWhite;
 		}
 	}
@@ -147,7 +164,7 @@ body {
 			display: block;
 			content: '';
 			background-color: $textWhite;
-			height: 1px;
+			height: 1pt;
 			width: 100%;
 		}
 		&:first-child::before {
@@ -176,10 +193,12 @@ body {
 }
 
 .recipe_card {
-	width:100%;
-	height:150px;
+	width: 100%;
+	height: 150px;
 	background-color: #c4c4c4;
 	box-shadow: $standardBoxShadow;
+	overflow: hidden;
+	display: flex;
 
 	a {
 		text-decoration: none;
@@ -196,17 +215,43 @@ body {
 	}
 
 	.recipe_card_text_holder {
+		padding-right: 5px;
+		padding-bottom: 5px;
+
 		%headings {
-			color: #2E3034;
+			color: #242529;
 			padding-right: 5px;
+			font-size: 1.3em;
+			margin: 0.5em 0 0.7em 0;
 		}
 		
-		p {
+		span {
+			display: block;
+			margin: 0;
 			color: #48494B;
-			padding-right: 5px;
+			
+			&.short_description {
+				display: none;
+			}
 		}
+
 	}
+}
+
+.main_article {
+	width: $mainArticleWidth;
+	margin: 0 calc( 50% - calc( #{$mainArticleWidth} / 2 ));
+	color: $textWhite;
+	line-height: 1.5em;
+}
+
+.bottom_spacer {
+	display: block;
+	height: $minimumPadding;
+	weight: 100%;
+	float: left;
 }
 
 @import "tablet";
 @import "mobile";
+@import "small_mobile";

@@ -32,7 +32,7 @@ function addTags(object, link) {
 		if( !tags[tagName] ) {
 			tags[tagName] = [];
 		}
-		tags[tagName].push(directoryEntry(object, link));
+		tags[tagName].push(link);
 	})
 }
 

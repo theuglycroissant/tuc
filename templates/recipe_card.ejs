@@ -1,9 +1,14 @@
-<div class="recipe_card">
+<%
+	var short_desc = description.substring(0, Math.min(description.length, 97))+"..."
+
+%>
+<div class="recipe_card" id="<%=link %>">
 	<div class="recipe_card_img_holder">
 		<a href="<%= link %>"><img src="<%= card_photo %>"></a>
 	</div>
 	<div class="recipe_card_text_holder">
 		<h3><a href="<%= link %>"><%= title %></a></h3>
-		<p><%= description %></p>
+		<span class="long_description"><%= description %></span>
+		<span class="short_description"><%= short_desc %></span>
 	</div>
 </div>

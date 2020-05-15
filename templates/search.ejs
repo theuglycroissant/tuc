@@ -1,6 +1,18 @@
 <%- include('header') -%>
-<h1><%= title %></h1>
+<h2>Tags</h2>
 <div id="tagList">
 </div>
+	<div class="spaced animated divider">
+		<div class="divider_arm"></div>
+		<h2>Search Results</h2>
+		<div class="divider_arm"></div>
+	</div>
+	<div class="recipe_card_grid">
+		<% for (var id in directories.recipe) { %>
+			<% if( directories.recipe[id].featured) { %>
+				<%- include('recipe_card', directories.recipe[id]) -%>
+			<% } %>
+		<% } %>
+	</div>
 <script type="text/javascript" src="app/search.js"></script>
 <%- include('footer') -%>

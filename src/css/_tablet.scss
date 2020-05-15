@@ -1,4 +1,8 @@
 @media only screen and (max-width: 900px) {
+	:root {
+		--minimumPadding: 20px;
+	}
+
 	.recipe_card_grid {
 		grid-template-columns: 1fr;
 	}
@@ -14,10 +18,6 @@
 			right: 0;
 			margin-left: auto;
 			margin-right: auto;
-
-			.nav_padder {
-				width: 40px;
-			}
 		}
 	}
 	

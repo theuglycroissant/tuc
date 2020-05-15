@@ -1,0 +1,9 @@
+@media only screen and (max-width: 350px) {
+	.recipe_card {
+		.recipe_card_text_holder {
+			span.short_description, span.long_description {
+				display: none;
+			}
+		}
+	}
+}
