@@ -5,7 +5,7 @@
 	splitDesc.forEach( function(word) {
 		if(word.length + desc_length <= 96) {
 			short_desc += word + " ";
-			desc_length += word.length;
+			desc_length += word.length + 1;
 		}
 	});
 	short_desc += "..."
