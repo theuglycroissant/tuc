@@ -20,6 +20,7 @@ function directoryEntry(object, link) {
 		directory: object.directory,
 		card_photo: object.card_photo,
 		description: object.description,
+		featured: object.featured,
 		link: link
 	})
 }

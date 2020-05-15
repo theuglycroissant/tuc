@@ -7,17 +7,17 @@
 		grid-template-columns: 1fr 1fr;
 	}
 
-	.nav_holder {
+	.nav_holder{
+
 		.logo_holder {
 			width: 100%;
 		}
-
+		
 		nav {
-			width: $mainPageWidth;
-
 			.nav_padder {
 				width: 20px;
 			}
 		}
+
 	}
 }

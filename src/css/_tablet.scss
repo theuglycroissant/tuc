@@ -1,17 +1,24 @@
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 900px) {
 	.recipe_card_grid {
 		grid-template-columns: 1fr;
 	}
-	
-	.nav_holder{
+
+	.nav_holder {
 		padding-bottom: calc( #{$minimumPadding} + #{$navHeight} );
+
 		nav {
+			width: min(600px, calc( 100% - 2 * #{$minimumPadding} ) );
 			top: unset;
 			bottom: 0;
 			left: 0;
 			right: 0;
 			margin-left: auto;
 			margin-right: auto;
+
+			.nav_padder {
+				width: 40px;
+			}
 		}
 	}
+	
 }

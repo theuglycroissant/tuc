@@ -13,6 +13,10 @@ $mainGridGap: var(--mainGridGap);
 $minimumPadding: var(--minimumPadding);
 $mainPageWidth: min( calc( 100% - 2 * #{$minimumPadding} ) , max(60%, 1200px));
 $navHeight: 30px;
+$hoverTime: 0.5s;
+$loadinTime: 1.5s;
+$standardBoxShadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+$softBoxShadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
 
 body {
 	background-color: $tucBack;
@@ -31,7 +35,7 @@ body {
 		width: 10%;
 		content: '';
 		height: 3px;
-		background-color: white;
+		background-color: $textWhite;
 	}
 
 	.logo_holder {
@@ -56,17 +60,17 @@ body {
 		justify-content: space-around;
 		right: 0;
 		top: calc(25% - 15px);
-		background-color: rgba($midGrey, 0.2);
+		background-color: $midGrey;
+		box-shadow: $softBoxShadow;
 
 		.nav_item {
 			display: inline-block;
 			color: $textWhite;
 			padding-left: 10px;
 			padding-right: 10px;
-
-			a {
-				text-decoration: none;
-				color: inherit;
+			transition: color $hoverTime;
+			&:hover {
+				color: $tucAccent;
 			}
 		}
 
@@ -95,7 +99,7 @@ body {
 	width: 100%;
 	display: block;
 	position: relative;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	box-shadow: $standardBoxShadow;
 
 	.category_card_img_holder {
 		width: 100%;
@@ -153,7 +157,7 @@ body {
 
 	&.animated .divider_arm::before {
 		animation-name: divider_arm_load;
-		animation-duration: 0.8s;
+		animation-duration: $loadinTime;
 		aniamtion-timing-function: ease-in-out;
 	}
 
@@ -175,7 +179,7 @@ body {
 	width:100%;
 	height:150px;
 	background-color: #c4c4c4;
-	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	box-shadow: $standardBoxShadow;
 
 	a {
 		text-decoration: none;

@@ -11,7 +11,9 @@
 	</div>
 	<div class="recipe_card_grid">
 		<% for (var id in directories.recipe) { %>
-			<%- include('recipe_card', directories.recipe[id]) -%>
+			<% if( directories.recipe[id].featured) { %>
+				<%- include('recipe_card', directories.recipe[id]) -%>
+			<% } %>
 		<% } %>
 	</div>
 <%- include('footer') %>

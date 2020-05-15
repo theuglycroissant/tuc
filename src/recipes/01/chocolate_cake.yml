@@ -2,6 +2,7 @@ template: default
 directory: recipe
 title: Chocolate Celebration Cake
 card_photo: recipes/01/cake_square.jpg
+featured: true
 description: |
   A really yummy chocolate cake.
   With Cointreau truffles.
