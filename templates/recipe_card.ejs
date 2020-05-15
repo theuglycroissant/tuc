@@ -1,11 +1,15 @@
 <%
 	var short_desc = "";
 	var desc_length = 0;
+	var finished = false;
 	splitDesc = description.split(" ");
 	splitDesc.forEach( function(word) {
+		if( finished ) { return }
 		if(word.length + desc_length <= 96) {
 			short_desc += word + " ";
 			desc_length += word.length + 1;
+		} else {
+			finished = true;
 		}
 	});
 	short_desc += "..."
