@@ -36,9 +36,6 @@ p,span {
 	font-weight: normal;
 }
 
-.hidden {
-	display: none;
-}
 
 .nav_holder {
 	display: flex;
@@ -199,6 +196,10 @@ p,span {
 	box-shadow: $standardBoxShadow;
 	overflow: hidden;
 	display: flex;
+
+	&.hidden {
+		display: none;
+	}
 
 	a {
 		text-decoration: none;
