@@ -1,0 +1,80 @@
+.multicheck {
+	position: relative;
+	height: 30px;
+	width: 250px;
+	display: block;
+	border-bottom: 1px solid $textWhite;
+	font-family: $sansSerifFont;
+
+	.multicheck_overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		opacity: 0;
+		background-color: black;
+		transition: opacity $hoverTime;
+
+		&:hover {
+			opacity: 0.1;
+		}
+	}
+	
+	span.multicheck_title {
+		display: block;
+		position: absolute;
+		bottom: 5px;
+		left: 0px;
+		color: $textWhite;
+	}
+
+	.multicheck_toggle {
+		content: '';
+		width: 16px;
+		height: 16px;
+		padding: 7px;
+		display: block;
+		position: absolute;
+		bottom: 0;
+		right: 0;
+		cursor: pointer;
+	}
+	
+	&.open {
+		.multicheck_contents {
+			display: block;
+		}
+		.multicheck_overlay {
+			opacity: 0.1;
+		}
+	}
+
+	.multicheck_contents {
+		display: none;
+		overflow-y: auto;
+		overflow-x: hidden;
+		position: absolute;
+		max-height: 150px;
+		min-width: 250px;
+		background-color: white;
+		top: 30px;
+		box-shadow: $standardBoxShadow;
+		
+
+		.multicheck_row {
+			width: 100%;
+			padding: 5px;
+			padding-right: 30px;
+			background-color: $textWhite;
+			
+			&:hover {
+				background-color: $tucMain-900;
+			}
+			
+			&:active {
+				background-color: $tucMain-800;
+			}
+		}
+	}
+}

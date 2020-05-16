@@ -30,4 +30,10 @@
 		}
 
 	}
+
+	.filter_holder {
+		.multicheck, .search_box{
+			margin: $minimumPadding 0;
+		}
+	}
 }

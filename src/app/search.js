@@ -1,41 +1,60 @@
+let recipeData = {};
 let tagData = {};
 let tags = [];
 let searchParams = {
 	tags: []
 }
+let searchKeys = ["title", "description"];
 let recipeCards = Array.from(document.getElementsByClassName('recipe_card'));
 
-fetch("/tags.json")
+fetch("/data/tags.json")
 	.then(res => res.json())
 	.then(res => {
 		tagData = res; 
 		tags = Object.keys(tagData);
 	})
-	.then( () => displayTagData() )
+	.then( () => {
+		parseURLQueries() 
+		displayTagData();
+		setupListeners("tagList", tagChange);
+		updateTagsTitle();
+		filterSearchResults();
+	})
 	.catch(err => console.log(err));
+
+fetch("/data/directories/recipe.json")
+	.then(res => res.json())
+	.then(res => { recipeData = res; })
+	.then( setupSearchBox )
+	.catch(err => console.log(err));
+
+function parseURLQueries() {
+	const urlParams = new URLSearchParams(window.location.search);
+	searchParams.tags = urlParams.getAll('tag')
+}
 
 function displayTagData() {
 	// Make tag list
-	let tagList = "<div>"
+	tagList = "";
 	tags.forEach( tag => {
-		tagList += `<input type="checkbox" name="__${tag}" onclick="updateTag(this,'${tag}')">`;
-		tagList += `<label for="__${tag}">${tag}</label>`;
+		tagChecked = searchParams.tags.includes(tag) ? "checked" : "";
+		tagList += `<div class="multicheck_row" multicheck-value="${tag}">`;
+		tagList += `<input type="checkbox" name="multicheck_tags_${tag}" ${tagChecked}>`;
+		tagList += `<label for="multicheck_tags_${tag}">${tag}</label>`;
+		tagList += "</div>";
 	});
-	tagList += "</div>";
 	document.getElementById("tagList").innerHTML = tagList;
 }
 
-function updateTag(elem, tag) {
-	if( elem.checked ) {
-		if( searchParams.tags.indexOf(tag) == -1 ) {
-			searchParams.tags.push(tag);
-		}
+
+function tagChange(contentsId, tag) {
+	let index = searchParams.tags.indexOf(tag)
+	if( index == -1 ) {
+		searchParams.tags.push(tag);
 	} else {
-		let index = searchParams.tags.indexOf(tag);
-		if ( index > -1 ) {
-			searchParams.tags.splice(index, 1);
-		}
+		searchParams.tags.splice(index, 1)
 	}
+	updateTagsTitle();
 	filterSearchResults();
 }
 
@@ -58,10 +77,43 @@ function filterSearchResults() {
 	}
 }
 
+function updateTagsTitle() {
+	let tagTitleElem = document.getElementById("multicheck_title_tags");
+	let numTags = searchParams.tags.length;
+	let newTitle;
+	if( numTags == 0 ) {
+		newTitle = "Tags";
+	} else if ( numTags == 1 ) {
+		newTitle = searchParams.tags[0];
+	} else if ( numTags == 2 ) {
+		newTitle = `${searchParams.tags[0]}, ${searchParams.tags[1]}`;
+	} else {
+		newTitle = `${numTags} selected`;
+	}
+	tagTitleElem.innerHTML = newTitle;
+}
+
 function showCard(elem) {
 	elem.classList.remove('hidden');
 }
 
 function hideCard(elem) {
 	elem.classList.add('hidden');
+}
+
+function setupSearchBox() {
+	const fuse = new Fuse(recipeData, {
+		keys: searchKeys,
+		threshold: 1.0
+	})
+	document.getElementById("search_box").addEventListener("input", event => {
+		let searchTerm = event.target.value;
+		let searchResults = fuse.search(searchTerm);
+		let order = 0;
+		searchResults.forEach(result => {
+			card = document.getElementById(result.item.link)
+			card.style.order = order;
+			order += 1;
+		});
+	});
 }

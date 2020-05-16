@@ -13,6 +13,7 @@ const distDir = path.join(__dirname, "dist");
 const templateDir = path.join(__dirname, "templates");
 
 let tags = {};
+let directories = {};
 
 function directoryEntry(object, link) {
 	return({
@@ -21,6 +22,7 @@ function directoryEntry(object, link) {
 		card_photo: object.card_photo,
 		description: object.description,
 		featured: object.featured,
+		tags: object.tags,
 		link: link
 	})
 }
@@ -28,7 +30,6 @@ function directoryEntry(object, link) {
 function addTags(object, link) {
 	if(!object.tags) { return }
 	object.tags.forEach( tagName => {
-		tagName = tagName.toLowerCase();
 		if( !tags[tagName] ) {
 			tags[tagName] = [];
 		}
@@ -79,7 +80,6 @@ copyPromise
 copyPromise
 	.then( () => glob(path.join(__dirname, "dist")+ '/**/*.{yml,yaml}') )
 	.then( filelist => {
-		let directories = {};
 		let processedList = [];
 		filelist.forEach( filename => {
 			// Process YAML file into a javascript object
@@ -122,6 +122,11 @@ copyPromise
 		});
 	})
 	.then( () => {
-		fs.writeFileSync(distDir + '/tags.json', JSON.stringify(tags));
+		fs.writeFileSync(distDir + '/data/tags.json', JSON.stringify(tags));
+		fs.writeFileSync(distDir + '/data/taglist.json', JSON.stringify(Object.keys(tags)));
+		let directoryNames = Object.keys(directories);
+		directoryNames.forEach( name => {
+			fs.writeFileSync(distDir + `/data/directories/${name}.json`, JSON.stringify(directories[name]));
+		})
 	})
 	.catch(err => console.log(err));

@@ -239,6 +239,26 @@ p,span {
 	}
 }
 
+.filter_holder {
+	padding-left: calc( 50% - ( #{$mainPageWidth} / 2 ) );
+	width: $mainPageWidth;
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+
+	input#search_box {
+		font-size: 1em;
+		height: 30px;
+		width: 250px;
+		display: block;
+		border: none;
+		color: $textWhite;
+		background-color: transparent;
+		border-bottom: 1px solid $textWhite;
+		font-family: $sansSerifFont;
+	}
+}
+
 .main_article {
 	width: $mainArticleWidth;
 	margin: 0 calc( 50% - calc( #{$mainArticleWidth} / 2 ));
@@ -253,6 +273,7 @@ p,span {
 	float: left;
 }
 
+@import "multicheck";
 @import "tablet";
 @import "mobile";
 @import "small_mobile";
