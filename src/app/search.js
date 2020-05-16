@@ -1,8 +1,10 @@
-let recipeData = {};
+let fuse;
+let recipeData = [];
 let tagData = {};
 let tags = [];
 let searchParams = {
-	tags: []
+	tags: [],
+	term: ""
 }
 let searchKeys = ["title", "description"];
 let recipeCards = Array.from(document.getElementsByClassName('recipe_card'));
@@ -55,26 +57,7 @@ function tagChange(contentsId, tag) {
 		searchParams.tags.splice(index, 1)
 	}
 	updateTagsTitle();
-	filterSearchResults();
-}
-
-function filterSearchResults() {
-	let linksToShow = [];
-	if ( searchParams.tags.length == 0 ) {
-		// No tag filter provided so show everything
-		recipeCards.forEach( card => showCard(card) );
-	} else {
-		// Show all cards
-		recipeCards.forEach( card => hideCard(card) );
-		// Create a big list of ids for recipes which have the right tag
-		searchParams.tags.forEach( tag => {
-			linksToShow = linksToShow.concat(tagData[tag]);
-		})
-		// Show those elements
-		linksToShow.forEach( link => {
-			showCard(document.getElementById(link));
-		})
-	}
+	searchFilter();
 }
 
 function updateTagsTitle() {
@@ -93,27 +76,70 @@ function updateTagsTitle() {
 	tagTitleElem.innerHTML = newTitle;
 }
 
+function setupSearchBox() {
+	fuse = new Fuse(recipeData, {
+		keys: searchKeys
+	})
+	document.getElementById("search_box").addEventListener("input", event => {
+		searchParams.term = event.target.value
+		searchFilter();
+	});
+}
+
+function searchFilter() {
+	// Hide all Ids by default
+	let hideIds = recipeData.map( recipe => recipe.link );
+	let showIds = [];
+	// Get search results (if we have a search term)
+	if( searchParams.term.length > 0 ) {
+		searchResults = fuse.search(searchParams.term).map( result => result.item );
+	} else {
+		searchResults = recipeData;
+	}
+	// Loop through search results and filter by tags
+	let order = 0;
+	console.log(searchResults);
+	searchResults.forEach( result => {
+		// Figure out whether we should show this results
+		// Assume not to start
+		let showResult = false;
+		if( searchParams.tags.length == 0 ) {
+			// No tags so we should show all results
+			showResult = true;
+		} else {
+			// Check each tag in the search filter
+			searchParams.tags.forEach( tag => {
+				if(!showResult) {
+					if(result.tags.indexOf(tag) !== -1) {
+						// This search result has one of the desired tags so we show
+						showResult = true;
+					}
+				}
+			})
+		}
+
+		if( showResult ) {
+			index = hideIds.indexOf(result.link);
+			hideIds.splice(index, 1);
+			showIds.push({ link: result.link, order: order});
+			order += 1;
+		}
+
+	});
+	hideIds.forEach(id => {
+		hideCard(document.getElementById(id));
+	})
+	showIds.forEach(id => {
+		card = document.getElementById(id.link);
+		card.style.order = id.order;
+		showCard(card);
+	})
+}
+
 function showCard(elem) {
 	elem.classList.remove('hidden');
 }
 
 function hideCard(elem) {
 	elem.classList.add('hidden');
-}
-
-function setupSearchBox() {
-	const fuse = new Fuse(recipeData, {
-		keys: searchKeys,
-		threshold: 1.0
-	})
-	document.getElementById("search_box").addEventListener("input", event => {
-		let searchTerm = event.target.value;
-		let searchResults = fuse.search(searchTerm);
-		let order = 0;
-		searchResults.forEach(result => {
-			card = document.getElementById(result.item.link)
-			card.style.order = order;
-			order += 1;
-		});
-	});
 }
