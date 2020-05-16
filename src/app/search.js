@@ -9,25 +9,26 @@ let searchParams = {
 let searchKeys = ["title", "description"];
 let recipeCards = Array.from(document.getElementsByClassName('recipe_card'));
 
-fetch("/data/tags.json")
+fetch("/data/taglist.json")
 	.then(res => res.json())
 	.then(res => {
-		tagData = res; 
-		tags = Object.keys(tagData);
+		tags = res;
 	})
 	.then( () => {
 		parseURLQueries() 
 		displayTagData();
 		setupListeners("tagList", tagChange);
 		updateTagsTitle();
-		filterSearchResults();
 	})
 	.catch(err => console.log(err));
 
 fetch("/data/directories/recipe.json")
 	.then(res => res.json())
 	.then(res => { recipeData = res; })
-	.then( setupSearchBox )
+	.then(() => {
+		setupSearchBox();
+		searchFilter();
+	})
 	.catch(err => console.log(err));
 
 function parseURLQueries() {
