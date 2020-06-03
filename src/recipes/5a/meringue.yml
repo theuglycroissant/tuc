@@ -1,4 +1,4 @@
-template: default
+template: recipe
 directory: recipe
 card_photo: /recipes/5a/square_pie.jpeg
 featured: true
