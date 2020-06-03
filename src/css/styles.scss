@@ -14,9 +14,10 @@ $minimumPadding: var(--minimumPadding);
 $mainPageWidth: min( calc( 100% - 2 * #{$minimumPadding} ) , max(60%, 1200px));
 $mainArticleWidth: min( calc( 100% - 2 * #{$minimumPadding} ), calc(800px + 0.2 * (100vw - 800px)));
 $navHeight: 30px;
-$hoverTime: 0.5s;
+$hoverTime: 0.4s;
 $loadinTime: 1.5s;
 $standardBoxShadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+$hoverBoxShadow: 2px 6px 6px rgba(0, 0, 0, 0.25);
 $softBoxShadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
 $sansSerifFont: 'Livvic', sans-serif;
 $serifFont: 'Arapey', serif;
@@ -115,6 +116,10 @@ p,span {
 	position: relative;
 	box-shadow: $standardBoxShadow;
 
+	&:hover {
+		box-shadow: $hoverBoxShadow;
+	}
+
 	.category_card_img_holder {
 		width: 100%;
 
@@ -197,6 +202,10 @@ p,span {
 	overflow: hidden;
 	display: flex;
 
+	&:hover {
+		box-shadow: $hoverBoxShadow;
+	}
+
 	&.hidden {
 		display: none;
 	}
@@ -256,6 +265,8 @@ p,span {
 		background-color: transparent;
 		border-bottom: 1px solid $textWhite;
 		font-family: $sansSerifFont;
+		border-radius: 0px;
+		padding-left: 0px;
 	}
 }
 

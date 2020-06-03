@@ -26,6 +26,7 @@ fetch("/data/directories/recipe.json")
 	.then(res => res.json())
 	.then(res => { recipeData = res; })
 	.then(() => {
+		console.log(recipeData);
 		setupSearchBox();
 		searchFilter();
 	})
@@ -79,7 +80,8 @@ function updateTagsTitle() {
 
 function setupSearchBox() {
 	fuse = new Fuse(recipeData, {
-		keys: searchKeys
+		keys: searchKeys,
+		distance: 500
 	})
 	document.getElementById("search_box").addEventListener("input", event => {
 		searchParams.term = event.target.value
