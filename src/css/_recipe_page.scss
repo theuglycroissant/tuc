@@ -32,6 +32,10 @@ $recipeLayoutSwitch: 650px;
 		flex-direction: column;
 	}
 
+	.recipe_page_title, .recipe_page_image, .recipe_page_method, .recipe_page_ingredients {
+		box-shadow: $standardBoxShadow;
+	}
+
 	.recipe_page_title {
 		background-color: $textWhite;
 		text-align: right;
@@ -40,7 +44,7 @@ $recipeLayoutSwitch: 650px;
 
 	.recipe_page_image {
 		width: 100%;
-		padding-bottom: $innerPadding;
+		margin-bottom: $innerPadding;
 
 		img {
 			width: 100%;

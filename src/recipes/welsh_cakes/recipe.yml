@@ -1,0 +1,30 @@
+template: recipe
+directory: recipe
+title: Welsh Cakes
+card_photo: /recipes/welsh_cakes/Welsh_Cakes.jpg
+featured: true
+description: |
+  These are my version of the classic.
+  They are slightly moister and sweeter than the original, but I think that this just makes a more enjoyable treat.
+  Perfect sprinkled with sugar and had with a cup of tea.
+tags:
+  - Yummy
+images:
+  - /recipes/welsh_cakes/Welsh_Cakes.jpg
+ingredients:
+  - 225g flour
+  - 50g caster sugar
+  - 1 tsp baking powder
+  - 100g butter, chilled and cut into small cubes
+  - 50g sultanas
+  - 50g condensed milk
+  - 1 tbsp milk
+method:
+  - Place the flour, sugar, baking powder and butter together in a large bowl. Using the tips of your fingers, rub the butter into the flour mix until it resembles breadcrumbs.
+    Make a small well in the centre of the mix and pour in the milks.
+    Mix with a spoon until combined.
+  - Bring the mixture together with your hands until a dough forms and place on a lightly floured surface.
+    Roll until approximately 5mm thick and use a pastry cutter to make rounds, approximately 2in in diameter.
+  - Heat a frying pan or a griddle to a medium-high heat.
+    Brush the pan with butter, and then place a few of the welsh cakes into the pan. Fry on each side for a couple of minutes until they turn a dark-golden colour.
+    Cool on a cooling rack, and enjoy.

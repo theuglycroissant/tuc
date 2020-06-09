@@ -3,7 +3,7 @@ directory: recipe
 card_photo: /recipes/lemon_meringue_pie/square_pie.jpeg
 featured: true
 title: Lemon Meringue Pie
-description: |
+description:
   Sharp curd with a sweet aquafaba meringue in a crisp pastry shell.
   Some extra words to pad out the box.
   Magical unicorns fly gracefully over the rainbow.
@@ -29,12 +29,10 @@ ingredients:
     - 200g sugar
     - 1/4 tsp cream of tartar
 method:
-  - |
-    Preheat the oven to 180C.
+  - Preheat the oven to 180C.
     Blind bake the pastry as in the ‘Blind Baking’ recipe.
     Leave to cool completely.
-  - |
-    Make the lemon curd.
+  - Make the lemon curd.
     In a medium pan, rub together the lemon zest with 1tsp of sugar with the back of a spoon until it releases its juices.
     Add the remaining sugar, the juice and the butter and bring to the boil over a high heat.
     Boil for approx. 5 minutes until it has somewhat reduced.
