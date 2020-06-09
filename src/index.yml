@@ -3,7 +3,7 @@ directory: index
 template: index
 categories:
   - title: Cakes
-    image: /recipes/01/cake_square.jpg
+    image: /recipes/chocolate_celebration_cake/cake_square.jpg
     link: /search.html?tag=Cake
   - title: Cookies
     image: /assets/cookies.jpeg
@@ -12,5 +12,5 @@ categories:
     image: /assets/bread.jpeg
     link: /search.html?tag=Bread
   - title: Tarts
-    image: /recipes/5a/square_pie.jpeg
+    image: /recipes/lemon_meringue_pie/square_pie.jpeg
     link: /search.html?tag=Tart

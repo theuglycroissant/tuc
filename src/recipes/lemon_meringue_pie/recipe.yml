@@ -1,0 +1,45 @@
+template: recipe
+directory: recipe
+card_photo: /recipes/lemon_meringue_pie/square_pie.jpeg
+featured: true
+title: Lemon Meringue Pie
+description: |
+  Sharp curd with a sweet aquafaba meringue in a crisp pastry shell.
+  Some extra words to pad out the box.
+  Magical unicorns fly gracefully over the rainbow.
+tags:
+  - Tart
+  - Aquafaba
+  - Lemon
+  - Yummy
+images:
+  - /recipes/lemon_meringue_pie/square_pie.jpg
+ingredients:
+  - 1x quantity of Basic Sweet Pastry
+  - Lemon Curd:
+    - Juice of 5 large lemons
+    - Zest of 2 lemons
+    - 150g caster sugar
+    - 100g butter
+    - 2tbsp cornflour
+    - 2tbsp water
+    - 200g condensed milk
+  - Meringue:
+    - 400ml can of chickpeas
+    - 200g sugar
+    - 1/4 tsp cream of tartar
+method:
+  - |
+    Preheat the oven to 180C.
+    Blind bake the pastry as in the ‘Blind Baking’ recipe.
+    Leave to cool completely.
+  - |
+    Make the lemon curd.
+    In a medium pan, rub together the lemon zest with 1tsp of sugar with the back of a spoon until it releases its juices.
+    Add the remaining sugar, the juice and the butter and bring to the boil over a high heat.
+    Boil for approx. 5 minutes until it has somewhat reduced.
+  - Mix together the cornflour and the water in a small bowl, and then add to the saucepan. Simmer the ingredients for a couple of minutes, or until thick and gloopy. Take off the heat and mix in the condensed milk, then leave to cool in the fridge for at least an hour. Place the lemon curd in the bottom of the pastry case. You might need to mix the curd so that it is at a spreadable consistency (in order to not break the tart case).
+  - Preheat the oven, again, to 180C. Make the meringue. Drain the chickpeas in a sieve, over a bowl, keeping the liquid - this is the aquafaba. Whisk the aquafaba in a standing mixer for a couple of minutes until bubbles begin to form and then add the cream of tartar. Keep whisking on a high speed until stiff peaks are formed, this could take up to 10 minutes. Then whilst continuing to mix add spoonfuls of sugar one at a time. Continue to whisk until glossy, stiff peaks are formed and you have your meringue.
+  - Spoon your desired amount of meringue on top of the curd, making sure you leave no holes or the meringue will weep. The amount you use will depend on preference and the size of your tart case, but I tend to use almost all of it.
+  - Place the tart in the oven and cook for 5-10 minutes until the meringue starts to gain colour. Remove from the oven and leave to cool completely before serving.
+  - This tart is best served straight away once cooled, but can be kept for 3 days in the fridge.

@@ -6,7 +6,8 @@ const sass = require("sass")
 const YAML = require("yaml");
 const ejs = require("ejs");
 const replaceExt = require("replace-ext");
-const myRender = util.promisify(sass.render);
+const uglifycss = require("uglifycss");
+const scssRender = util.promisify(sass.render);
 
 const sourceDir = path.join(__dirname, "src");
 const distDir = path.join(__dirname, "dist");
@@ -55,7 +56,7 @@ copyPromise
 			if(path.basename(filename).charAt(0) == '_') {
 				renderPromises.push( Promise.resolve({partial: true, filename}) );
 			} else {
-				renderPromises.push(myRender({ file: filename }));
+				renderPromises.push(scssRender({ file: filename }));
 			}
 		});
 		return Promise.all(renderPromises);
@@ -69,7 +70,8 @@ copyPromise
 				// Write processed scss to file and remove old files
 				let inFilename = processed.stats.entry
 				let outFilename = replaceExt(inFilename, '.css');
-				fs.writeFile(outFilename, processed.css);
+				let processedCSS = uglifycss.processString(processed.css.toString());
+				fs.writeFile(outFilename, processedCSS);
 				fs.remove(inFilename);
 			}
 		})

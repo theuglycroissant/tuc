@@ -1,0 +1,120 @@
+$targetWidth: 1200px;
+$recipeMainWidth: min( calc( 100vw - 2 * #{$minimumPadding} ), #{$targetWidth});
+$innerPadding: 15px;
+$sideFraction: 0.3;
+$recipeMarginLeft : max( #{$minimumPadding}, 
+			calc( 50vw - calc( #{0.5*(1+$sideFraction)} * #{$recipeMainWidth} ) ));
+$recipeLayoutSwitch: 650px;
+
+.recipe_wrapper {
+	display: block;
+	width: $recipeMainWidth;
+	margin-left: $recipeMarginLeft;
+
+	.recipe_left_column {
+		display: flex;
+		float: left;
+		width: calc(#{$sideFraction * 100%} - calc( #{$innerPadding} / 2.0));
+		margin-right: calc( #{$innerPadding} / 2 );
+		flex-direction: column;
+
+		.recipe_page_title {
+			display: none;
+		}
+	}
+
+	.recipe_right_column {
+		display: flex;
+		float: right;
+		width: calc(#{(1-$sideFraction) * 100%} - calc( #{$innerPadding} / 2.0));
+		margin-left: calc( #{$innerPadding} / 2 );
+		flex-direction: column;
+	}
+
+	.recipe_page_title {
+		background-color: $textWhite;
+		text-align: right;
+		padding: $innerPadding;
+	}
+
+	.recipe_page_image {
+		width: 100%;
+		padding-bottom: $innerPadding;
+
+		img {
+			width: 100%;
+		}
+	}
+
+	.recipe_page_ingredients {
+		background-color: $tucAccentWeak;
+		padding: $innerPadding;
+		h3 {
+			margin: 0;
+			padding-top: 10px;
+			text-decoration: underline;
+			font-family: $sansSerifFont;
+		}
+		ul {
+			padding: 0;
+			list-style-type: none;
+		}
+		li {
+			font-family: $sansSerifFont;
+		}
+	}
+
+	.recipe_page_method {
+		background-color: $textWhite;
+		padding: $innerPadding;
+	}
+}
+
+.preline_wrapper {
+	display: flex;
+	align-items: center;
+	flex-direction: row;
+	margin-left: -$innerPadding;
+
+	h2 {
+		margin: 0;
+	}
+
+	.preline::before {
+		display: block;
+		content: '';
+		background-color: black;
+		height: 1px;
+		width: 40px;
+		margin-right: 10px;
+	}
+}
+
+@media only screen and (max-width: $recipeLayoutSwitch) {
+	.recipe_wrapper {
+		width: calc(100% - 2 * #{$minimumPadding});
+		margin-left: $minimumPadding;
+
+		.recipe_left_column, .recipe_right_column{
+			width: 100%;
+			margin: none;
+		}
+
+		.recipe_left_column {
+			.recipe_page_title {
+				display: block;
+				margin-bottom: $innerPadding;
+			}
+
+			.recipe_page_ingredients {
+				margin-bottom: $innerPadding;
+			}
+		}
+
+		.recipe_right_column {
+			.recipe_page_title {
+				display: none;
+			}
+		}
+	}
+}

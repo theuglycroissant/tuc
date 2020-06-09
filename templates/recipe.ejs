@@ -1,15 +1,40 @@
 <%- include('header') %>
 <div class="recipe_wrapper">
 	<div class="recipe_left_column">
-		<div class="recipe_page_image"></div>
-		<div class="recipe_page_title">
-			<%= title %>
+		<div class="recipe_page_image">
+			<img src="<%= card_photo %>">
 		</div>
-		<div class="recipe_page_ingredients"></div>
+		<div class="recipe_page_title">
+			<h1><%= title %></h1>
+			<p><%= description %></p>
+		</div>
+		<div class="recipe_page_ingredients">
+			<div class="preline_wrapper"><div class="preline no_print"></div><h2>Ingredients</h2></div>
+			<ul>
+			<% ingredients.forEach(row => {
+				if(typeof(row)==='object') {
+					var subtitle = Object.keys(row)[0]
+			%>
+				<h3><%- subtitle %></h3>
+				<% row[subtitle].forEach(ingredient => { %>
+				<li><%- ingredient %></li>
+			<% }) } else { %>
+				<li><%- row %></li>
+			<% }}) %>
+			</ul>
+		</div>
 	</div>
 	<div class="recipe_right_column">
-		<div class="recipe_page_title"></div>
-		<div class="recipe_page_method"></div>
+		<div class="recipe_page_title">
+			<h1><%= title %></h1>
+			<p><%= description %></p>
+		</div>
+		<div class="recipe_page_method">
+			<div class="preline_wrapper"><div class="preline no_print"></div><h2>Method</h2></div>
+			<% method.forEach( paragraph => { %>			
+				<p><%- paragraph %></p>
+			<% }) %>
+		</div>
 	</div>
 </div>
 <%- include('footer') %>

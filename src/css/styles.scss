@@ -1,5 +1,5 @@
 @import "colours";
-@import "shorthand";
+@import "variables";
 @import "utils";
 
 :root{
@@ -8,19 +8,6 @@
 	--dividerSpacing: 30px;
 }
 
-$dividerSpacing: var(--dividerSpacing);
-$mainGridGap: var(--mainGridGap);
-$minimumPadding: var(--minimumPadding);
-$mainPageWidth: min( calc( 100% - 2 * #{$minimumPadding} ) , max(60%, 1200px));
-$mainArticleWidth: min( calc( 100% - 2 * #{$minimumPadding} ), calc(800px + 0.2 * (100vw - 800px)));
-$navHeight: 30px;
-$hoverTime: 0.4s;
-$loadinTime: 1.5s;
-$standardBoxShadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-$hoverBoxShadow: 2px 6px 6px rgba(0, 0, 0, 0.25);
-$softBoxShadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
-$sansSerifFont: 'Livvic', sans-serif;
-$serifFont: 'Arapey', serif;
 
 body {
 	background-color: $tucBack;
@@ -33,10 +20,13 @@ p,span {
 	font-family: $sansSerifFont;
 }
 
+*.serif_font {
+	font-family: $serifFont !important;
+}
+
 %headings {
 	font-weight: normal;
 }
-
 
 .nav_holder {
 	display: flex;
@@ -280,7 +270,7 @@ p,span {
 .bottom_spacer {
 	display: block;
 	height: $minimumPadding;
-	weight: 100%;
+	width: 100%;
 	float: left;
 }
 
@@ -289,3 +279,4 @@ p,span {
 @import "tablet";
 @import "mobile";
 @import "small_mobile";
+@import "print";

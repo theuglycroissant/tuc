@@ -18,6 +18,7 @@
     "path": "^0.12.7",
     "replace-ext": "^2.0.0",
     "sass": "^1.26.5",
+    "uglifycss": "0.0.29",
     "yaml": "^1.9.2"
   },
   "devDependencies": {
