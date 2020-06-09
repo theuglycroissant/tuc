@@ -3,19 +3,6 @@
 		--minimumPadding: 10px;
 	}
 	
-	
-	.recipe_card {
-		.recipe_card_text_holder {
-			span.long_description {
-				display: none;
-			}
-			span.short_description {
-				display: block;
-			}
-		}
-	}
-	
-
 	.category_card_grid {
 		grid-template-columns: 1fr 1fr;
 	}
