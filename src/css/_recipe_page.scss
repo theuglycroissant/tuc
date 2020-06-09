@@ -2,8 +2,9 @@ $targetWidth: 1200px;
 $recipeMainWidth: min( calc( 100vw - 2 * #{$minimumPadding} ), #{$targetWidth});
 $innerPadding: 15px;
 $sideFraction: 0.3;
-$recipeMarginLeft : max( #{$minimumPadding}, 
-			calc( 50vw - calc( #{0.5*(1+$sideFraction)} * #{$recipeMainWidth} ) ));
+/*$recipeMarginLeft : max( #{$minimumPadding}, 
+			calc( 50vw - calc( #{0.5*(1+$sideFraction)} * #{$recipeMainWidth} ) ));*/
+$recipeMarginLeft: calc(50vw - 0.5 *#{$recipeMainWidth});
 $recipeLayoutSwitch: 650px;
 
 .recipe_wrapper {
