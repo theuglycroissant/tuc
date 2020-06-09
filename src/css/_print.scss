@@ -2,4 +2,7 @@
 	.no_print, .no_print * {
 		display: none !important;
 	}
+	.recipe_page_title, .recipe_page_image, .recipe_page_method, .recipe_page_ingredients {
+		box-shadow: none !important;
+	}
 }
