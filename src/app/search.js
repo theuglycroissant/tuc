@@ -26,7 +26,6 @@ fetch("/data/directories/recipe.json")
 	.then(res => res.json())
 	.then(res => { recipeData = res; })
 	.then(() => {
-		console.log(recipeData);
 		setupSearchBox();
 		searchFilter();
 	})
@@ -101,7 +100,6 @@ function searchFilter() {
 	}
 	// Loop through search results and filter by tags
 	let order = 0;
-	console.log(searchResults);
 	searchResults.forEach( result => {
 		// Figure out whether we should show this results
 		// Assume not to start

@@ -13,6 +13,8 @@ const sourceDir = path.join(__dirname, "src");
 const distDir = path.join(__dirname, "dist");
 const templateDir = path.join(__dirname, "templates");
 
+const buildConfig = require('./build.config.js');
+
 let tags = {};
 let directories = {};
 
@@ -88,12 +90,19 @@ copyPromise
 			let yamlContents = fs.readFileSync(filename, {encoding:'utf8'});
 			let jsonContents = YAML.parse(yamlContents);
 			let newFilename = replaceExt(filename, '.html');
+			// Case insensitive tags
+			if(buildConfig.options.caseInsensitiveTags) {
+				if(typeof(jsonContents.tags) !== 'undefined') {
+					jsonContents.tags = jsonContents.tags.map(tag => tag.toLowerCase() );
+				}
+			}
+			// Add to processed list
 			processedList.push({
 				oldFilename: filename,
 				newFilename: newFilename,
 				contents: jsonContents
 			});
-			// Check if recipe, then we have to add tags and to directory
+			// Check if index, if not then we need to add to appropriate directory and add tags
 			if( jsonContents.directory !== 'index') {
 				let link = filenameToLink(newFilename);
 				if(!directories[jsonContents.directory]) {
