@@ -217,16 +217,16 @@ p,span {
 
 	.recipe_card_text_holder {
 		padding-right: 5px;
-		padding-bottom: 5px;
-		height: 145px;
+		padding-bottom: 10px;
+		height: 140px;
 		display: flex;
 		flex-direction: column;
 
 		%headings {
 			color: #242529;
 			font-size: 1.3em;
-			margin: 5px 0px 10px 0px;
-			line-height: 25px;
+			margin: 10px 0px 10px 0px;
+			line-height: 20px;
 		}
 		
 		span {
