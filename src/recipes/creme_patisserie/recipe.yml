@@ -1,0 +1,23 @@
+template: recipe
+directory: recipe
+title: Creme Patisserie
+card_photo: /recipes/creme_patisserie/Tart_square.jpg
+featured: false
+description: |
+  I have tried to make an alternative to the baking classic, that’s just as versatile.
+  This is my version of creme patisserie.
+  I think the key is good vanilla to provide the richness, but you may choose any custard powder you want.
+tags:
+  - pastry
+images:
+  - /recipes/creme_patisserie/Tart_square.jpg
+ingredients:
+  - 250g double cream
+  - 100g white chocolate
+  - 2tbsp custard powder
+  - 220ml whole milk
+method:
+  - Make the custard. Mix the custard powder in a bowl with 2tbsp milk, to make a thick paste. Gently heat the rest of the milk in a pan, until just under boiling. Mix the custard together and place back in the pan. With a whisk, stir the custard mix over the heat until you have a thick custard. Cover and leave to cool completely.
+  - In a separate bowl, melt the white chocolate. You can either do this over a bain marie, or just in the microwave keeping an eye on it. Leave to cool completely.
+  - Whip the cream until just after soft peaks form. Mix together the custard and white chocolate in a bowl, and then fold in the whipped cream until you have a light, fluffy mixture.
+  - You are ready to use this in other recipes.

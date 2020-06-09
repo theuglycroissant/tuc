@@ -11,8 +11,8 @@
 
 body {
 	background-color: $tucBack;
-	padding: 0;
-	margin: 0;
+	padding: 0px;
+	margin: 0px;
 	font-family: $serifFont;
 }
 
@@ -43,7 +43,7 @@ p,span {
 
 	.logo_holder {
 		width: min(500px, 40%);
-		padding: 0 0 0 $minimumPadding;
+		padding: 0px 0px 0px $minimumPadding;
 
 		img {
 			width:100%;
@@ -61,7 +61,7 @@ p,span {
 		display: flex;
 		align-items: center;
 		justify-content: space-around;
-		right: 0;
+		right: 0px;
 		top: calc(25% - 15px);
 		background-color: $midGrey;
 		box-shadow: $softBoxShadow;
@@ -71,7 +71,6 @@ p,span {
 			color: $textWhite;
 			padding-left: 10px;
 			padding-right: 10px;
-			font-family: $sansSerifFont;
 
 			&:hover {
 				transition: color $hoverTime;
@@ -88,7 +87,7 @@ p,span {
 }
 
 @keyframes divider_arm_load {
-	from {width: 0;}
+	from {width: 0%;}
 	to {width: 100%;}
 }
 
@@ -120,13 +119,13 @@ p,span {
 
 	.category_card_text_holder {
 		position: absolute;
-		bottom: 0;
+		bottom: 0px;
 		width: 100%;
 		background-color: rgba($tucBack, 0.7);
 		text-align: center;
 		
 		%headings {
-			margin: 10px 0;
+			margin: 10px 0px;
 		}
 
 		a {
@@ -144,7 +143,7 @@ p,span {
 	align-items:center;
 	
 	&.spaced {
-		margin: $dividerSpacing 0;
+		margin: $dividerSpacing 0px;
 	}
 
 	.divider_arm {
@@ -172,7 +171,7 @@ p,span {
 
 	%headings {
 		padding: 0px 20px;
-		margin: 0;
+		margin: 0px;
 	}
 }
 
@@ -189,7 +188,6 @@ p,span {
 	height: 150px;
 	background-color: $textWhite;
 	box-shadow: $standardBoxShadow;
-	overflow: hidden;
 	display: flex;
 
 	&:hover {
@@ -208,6 +206,7 @@ p,span {
 	.recipe_card_img_holder {
 		float:left;
 		margin-right: 10px;
+		width: 150px;
 
 		img {
 			height:100%;
@@ -217,19 +216,23 @@ p,span {
 	.recipe_card_text_holder {
 		padding-right: 5px;
 		padding-bottom: 5px;
+		height: 145px;
 
 		%headings {
 			color: #242529;
-			padding-right: 5px;
 			font-size: 1.3em;
-			margin: 0.5em 0 0.7em 0;
+			margin: 5px 0px 10px 0px;
+			line-height: 25px;
 		}
 		
 		span {
 			display: block;
-			margin: 0;
+			margin: 0px;
 			color: #48494B;
-			
+			height: 100px;
+			line-height: 20px;
+			overflow: hidden;
+
 			&.short_description {
 				display: none;
 			}
@@ -262,7 +265,7 @@ p,span {
 
 .main_article {
 	width: $mainArticleWidth;
-	margin: 0 calc( 50% - calc( #{$mainArticleWidth} / 2 ));
+	margin: 0px calc( 50% - calc( #{$mainArticleWidth} / 2 ));
 	color: $textWhite;
 	line-height: 1.5em;
 }

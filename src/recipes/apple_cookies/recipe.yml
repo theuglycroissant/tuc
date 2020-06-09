@@ -1,0 +1,31 @@
+template: recipe
+directory: recipe
+title: Apple and Cinnamon Cookies
+card_photo: /recipes/apple_cookies/Apple_Cinnamon_Cookies_Square.jpg
+featured: false
+description: |
+  Time for something simple and homely. These are the perfect way to use up a couple of eating apples when friends are coming over or you want something with your cup of tea.
+tags:
+  - cookies
+  - biscuits
+  - apple
+images:
+  - /recipes/apple_cookies/Apple_Cinnamon_Cookies_Square.jpg
+ingredients:
+  - 100g butter, softened
+  - 60g light brown sugar
+  - 1 tbsp bramley apple sauce
+  - 2 tbsp golden syrup
+  - 1 tsp cinnamon
+  - 50g porridge oats
+  - 120g plain flour
+  - 1/2 tsp baking powder
+  - one eating apple (approx. 60-70g)
+method:
+  - Preheat the oven to 190°C or 180°C fan.
+  - Cream together the butter and sugars with an electric whisk or spoon until light and fluffy.
+    Mix in the apple sauce, golden syrup and cinnamon.
+  - In another bowl, mix together the oats, flour and baking powder.
+  - Core the apple and cut into small pieces, adding them to the flour mix.
+  - Mix the dry ingredients into the butter until a dough forms. Divide into twelve pieces and distribute on two baking trays, flattening them slightly with the back of a spoon.
+  - Bake for approximately 12 minutes, or until golden, and then cool until solid.

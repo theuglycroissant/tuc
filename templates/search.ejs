@@ -17,9 +17,7 @@
 </div>
 <div class="recipe_card_grid">
 	<% for (var id in directories.recipe) { %>
-		<% if( directories.recipe[id].featured) { %>
-			<%- include('recipe_card', directories.recipe[id]) -%>
-		<% } %>
+		<%- include('recipe_card', directories.recipe[id]) -%>
 	<% } %>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.0.0"></script>

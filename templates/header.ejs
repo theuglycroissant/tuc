@@ -1,9 +1,37 @@
+<% let THEME_COLOR = "#48494B" %>
+<!DOCTYPE html>
 <html>
 <head>
-	<title><%= title %></title>
+	<!-- Metadata -->
+	<title><%- title %></title>
+	<% if( typeof description !== 'undefined' ) { %>
+	<meta name="description" content="<%- description %>">
+	<% } %>
+
+	<!-- Open Graph metadata -->
+	<meta property="og:title" content="<%- title %>">
+	<meta property="og:type" cotnent="website">
+	<% if( typeof card_photo !== 'undefined' ) { %>
+	<meta name="og:image" content="<%- card_photo %>">
+	<% } %>
+
+	<!-- Responsive metatag -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Favicons -->
+	<link rel="shortcut icon" type="image/png" href="/apple-touch-icon.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/site.webmanifest">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="<%- THEME_COLOR %>">
+	<meta name="msapplication-TileColor" content="<%- THEME_COLOR %>">
+	<meta name="theme-color" content="<%- THEME_COLOR %>">
+
+	<!-- Stylesheets -->
 	<link rel="stylesheet" type="text/css" href="/css/styles.css" />
 	<link href="https://fonts.googleapis.com/css2?family=Arapey&family=Livvic&display=swap" rel="stylesheet">
+
 </head>
 <body>
 <div class="nav_holder">
