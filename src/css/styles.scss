@@ -219,6 +219,8 @@ p,span {
 		padding-right: 5px;
 		padding-bottom: 5px;
 		height: 145px;
+		display: flex;
+		flex-direction: column;
 
 		%headings {
 			color: #242529;
