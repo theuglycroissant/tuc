@@ -46,10 +46,16 @@ $recipeLayoutSwitch: 650px;
 	.recipe_page_image {
 		width: 100%;
 		margin-bottom: $innerPadding;
+		display: flex;
+		align-items: center;
+		overflow: hidden;
+		background-color: $midGrey;
 
 		img {
 			display: block;
 			width: 100%;
+			flex-grow: 0;
+			flex-shrink: 0;
 		}
 	}
 

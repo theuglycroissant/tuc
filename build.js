@@ -26,6 +26,7 @@ function directoryEntry(object, link) {
 		description: object.description,
 		featured: object.featured,
 		tags: object.tags,
+		date: object.date,
 		link: link
 	})
 }
@@ -42,6 +43,15 @@ function addTags(object, link) {
 
 function filenameToLink(filename){
 	return path.relative(distDir, filename);
+}
+
+function processDirectories(directories) {
+	Object.keys(directories).forEach( key => {
+		if(buildConfig.directoryProcessors[key]) {
+			directories[key] = buildConfig.directoryProcessors[key](directories[key]);
+		}
+	})
+	return directories;
 }
 
 // Copy source to dist
@@ -112,6 +122,8 @@ copyPromise
 				addTags(jsonContents, link);
 			}
 		});
+		// Now we need to order directories
+		directories = processDirectories(directories)
 		processedList.forEach( item => {
 			// Check that we have a template
 			if( !item.contents.template ) { return }

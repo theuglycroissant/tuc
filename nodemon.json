@@ -1,4 +1,4 @@
 {
-	"watch": ["src", "templates", "build.js"],
+	"watch": ["src", "templates", "build.js", "build.config.js"],
 	"ext": "js css scss yml yaml ejs json html"
 }
