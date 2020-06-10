@@ -64,7 +64,7 @@ $recipeLayoutSwitch: 650px;
 				border-radius: 10px;
 				background-color: $textWhite;
 				box-shadow: $standardBoxShadow;
-				transition: background-color $loadinTime;
+				transition: background-color 0.7s;
 				cursor: pointer;
 
 				&.active {
