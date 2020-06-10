@@ -43,19 +43,49 @@ $recipeLayoutSwitch: 650px;
 		padding: $innerPadding;
 	}
 
-	.recipe_page_image {
-		width: 100%;
+	.recipe_page_image_wrapper {
+		position: relative;
 		margin-bottom: $innerPadding;
-		display: flex;
-		align-items: center;
-		overflow: hidden;
-		background-color: $midGrey;
 
-		img {
-			display: block;
+		.recipe_page_image_nav {
+			position: absolute;
+			bottom: 0;
 			width: 100%;
-			flex-grow: 0;
-			flex-shrink: 0;
+			height: 50px;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: center;
+
+			.navball {
+				height: 20px;
+				width: 20px;
+				margin: 0px 10px;
+				border-radius: 10px;
+				background-color: $textWhite;
+				box-shadow: $standardBoxShadow;
+				transition: background-color $loadinTime;
+				cursor: pointer;
+
+				&.active {
+					background-color: $tucAccent;
+				}
+			}
+		}
+
+		.recipe_page_image {
+			width: 100%;
+			display: flex;
+			align-items: center;
+			overflow: hidden;
+			background-color: $midGrey;
+
+			img {
+				display: block;
+				width: 100%;
+				flex-grow: 0;
+				flex-shrink: 0;
+			}
 		}
 	}
 
