@@ -5,13 +5,13 @@
 	<!-- Metadata -->
 	<title><%- title %></title>
 	<% if( typeof description !== 'undefined' ) { %>
-	<meta name="description" content="<%- description %>">
+	<meta name="description" content="<%= description %>">
 	<% } %>
 
 	<!-- Open Graph metadata -->
 	<meta property="og:site_name" content="The Ugly Croissant">
 	<meta property="og:title" content="<%- title %>">
-	<meta property="og:type" cotnent="website">
+	<meta property="og:type" content="website">
 	<% if( typeof card_photo !== 'undefined' ) { %>
 	<meta name="og:image" content="<%- card_photo %>">
 	<% } %>
@@ -28,6 +28,11 @@
 	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="<%- THEME_COLOR %>">
 	<meta name="msapplication-TileColor" content="<%- THEME_COLOR %>">
 	<meta name="theme-color" content="<%- THEME_COLOR %>">
+
+	<!-- Structured content -->
+	<% if( typeof(directory)!=='undefined' && directory === 'recipe' ) { %>
+	<%- include('structured_content') %>
+	<% } %>
 
 	<!-- Stylesheets -->
 	<link rel="stylesheet" type="text/css" href="/css/styles.css" />

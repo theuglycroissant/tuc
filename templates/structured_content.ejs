@@ -1,0 +1,13 @@
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "Recipe",
+	"name": "<%= title %>",
+	"image": <%- JSON.stringify(images) %>,
+	"author": {
+		"@type": "Person",
+		"name": "Nicola Easton"
+	},
+	"description": "<%- description.replace(/(\r\n|\n|\r)/gm, " ") %>"
+}
+</script>
