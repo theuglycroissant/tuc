@@ -5,7 +5,7 @@ module.exports.options = {
 	convertImgs: {
 		ignore: ['/assets/the_ugly_croissant_long.png'],
 		extensions: ['jpg' ,'jpeg', 'JPG', 'JPEG', 'png', 'PNG'],
-		maxSize: '500'
+		maxSize: 500
 	}
 }
 

@@ -1,14 +1,17 @@
 #!/bin/sh
-echo "Saving src changes, please provide a commit message:"
+MAGENTA='\033[1;35m'
+NC='\033[0m'
+
+printf "${MAGENTA}Saving src changes, please provide a commit message:${NC}\n"
 read commitMsg
 git add .
-git commit -m \""${commitMsg}"\"
+git commit -m "${commitMsg}"
 git push origin master
 
-echo "Building distribution folder"
+echo "${MAGENTA}Building distribution folder${NC}\n"
 npm run build
 
-echo "Deploying dist folder to github repo"
+echo "${MAGENTA}Deploying dist folder to github repo${NC}\n"
 releaseDate=$(date)
 publishRepo=$(cat publish_repo)
 
@@ -20,4 +23,4 @@ git remote add origin "$publishRepo"
 git push -f origin master
 cd ..
 
-echo "Release finished"
+echo "${MAGENTA}Release finished${NC}\n"
