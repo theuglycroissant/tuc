@@ -1,4 +1,6 @@
 #!/bin/sh
+cd -- "$(dirname "$BASH_SOURCE")"
+
 STARTER='\033[1;36m===> \033[1;35m'
 NC='\033[0m'
 
