@@ -2,6 +2,7 @@ template: recipe
 directory: recipe
 title: Chocolate Celebration Cake
 card_photo: /recipes/chocolate_celebration_cake/cake_square.jpg
+instagram: https://www.instagram.com/p/Bnx_Bn-FVrU/?utm_source=ig_web_copy_link
 featured: true
 description:
   A really yummy chocolate cake.
@@ -14,7 +15,6 @@ tags:
   - Yummy
 images:
   - /recipes/chocolate_celebration_cake/cake_square.jpg
-  - /recipes/chocolate_celebration_cake/cake_not_square.jpg
 ingredients:
   - 150g dark chocolate
   - Butter for greasing
