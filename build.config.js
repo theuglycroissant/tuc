@@ -1,5 +1,15 @@
 module.exports.options = {
-	caseInsensitiveTags: true
+	caseInsensitiveTags: true,
+	minifyJS: true,
+	// TODO : Add ignore GLOBs
+	convertImgs: {
+		extensions: ['jpg' ,'jpeg', 'JPG', 'JPEG', 'png', 'PNG'],
+		maxSize: '500'
+	}
+}
+
+module.exports.directoryEntries = {
+	recipe: ['title', 'card_photo', 'description', 'featured', 'tags', 'date']
 }
 
 module.exports.directoryProcessors = {

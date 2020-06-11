@@ -6,7 +6,9 @@ const sass = require("sass")
 const YAML = require("yaml");
 const ejs = require("ejs");
 const replaceExt = require("replace-ext");
+const gm = require("gm").subClass({imageMagick: true});
 const uglifycss = require("uglifycss");
+const minify = require("minify");
 const scssRender = util.promisify(sass.render);
 
 const sourceDir = path.join(__dirname, "src");
@@ -19,16 +21,14 @@ let tags = {};
 let directories = {};
 
 function directoryEntry(object, link) {
-	return({
-		title: object.title,
-		directory: object.directory,
-		card_photo: object.card_photo,
-		description: object.description,
-		featured: object.featured,
-		tags: object.tags,
-		date: object.date,
-		link: link
-	})
+	returnObject = {link: link};
+	entries = buildConfig.directoryEntries[object.directory]
+	if(typeof(entries) !== 'undefined') {
+		entries.forEach(entry => {
+			returnObject[entry] = object[entry]
+		})
+	}
+	return returnObject;
 }
 
 function addTags(object, link) {
@@ -60,7 +60,7 @@ let copyPromise = fs.remove(distDir)
 
 // Process all the CSS
 copyPromise
-	.then( () => glob(path.join(__dirname, "dist" )+'/**/*.scss') )
+	.then( () => glob(distDir + '/**/*.scss') )
 	.then( filelist => {
 		let renderPromises = [];
 		filelist.forEach(filename => {
@@ -88,11 +88,51 @@ copyPromise
 			}
 		})
 	})
-	.catch(err => console.log(err));
+	.catch(err => console.error(err));
+
+// Minify JS
+if( buildConfig.options.minifyJS ) {
+	copyPromise
+		.then( () => glob(distDir+'/**/*.js') )
+		.then( filelist => {
+			filelist.forEach(file => {
+				minify(file).then(minified => {
+					fs.writeFile(file, minified);
+				});
+			})
+		});
+}
+
+// Convert photos
+if( buildConfig.options.convertImgs ) {
+	// Build up glob based on provided extensions
+	myGlob = distDir + '/**/*.{'
+	firstExt = true;
+	buildConfig.options.convertImgs.extensions.forEach(ext => {
+		if(!firstExt){
+			myGlob += ",";
+		}
+		myGlob += ext;
+		firstExt = false;
+	})
+	myGlob += "}";
+	maxSize = buildConfig.options.convertImgs.maxSize;
+	copyPromise
+		.then( () => glob(myGlob) )
+		.then( filelist => {
+			filelist.forEach(file => {
+				// We add > so that we only downscale, never upscale
+				gm(file)
+					.resize(maxSize, maxSize, '>')
+					.write(file, (err) => {if (err) throw err} );
+			})
+		})
+		.catch( console.error );
+}
 
 // Process all the YML with their templates
 copyPromise
-	.then( () => glob(path.join(__dirname, "dist")+ '/**/*.{yml,yaml}') )
+	.then( () => glob(distDir + '/**/*.{yml,yaml}') )
 	.then( filelist => {
 		let processedList = [];
 		filelist.forEach( filename => {
@@ -121,30 +161,36 @@ copyPromise
 				directories[jsonContents.directory].push(directoryEntry(jsonContents, link));
 				addTags(jsonContents, link);
 			}
+			// Delete YAML file from source
+			fs.remove(filename);
 		});
-		// Now we need to order directories
+		// Now we need to allow directories to be processed
 		directories = processDirectories(directories)
+		// Now we add directory info to all indexes
+		processedList.forEach( item => {
+			if( item.contents.directory == 'index' ) {
+				item.contents.directories = directories;
+			}
+		});
+		// Now we process all objects into HTML
 		processedList.forEach( item => {
 			// Check that we have a template
 			if( !item.contents.template ) { return }
 			let templatePath = templateDir + '/' + item.contents.template + '.ejs';
 			if( !fs.existsSync(templatePath) ) { return }
-			// Add directories if directory is index
-			if( item.contents.directory == 'index' ) {
-				item.contents.directories = directories;
-			}
 			// Render contents with template
 			ejs.renderFile(templatePath, item.contents, (err, processedContents) => {
 				if(err) {
 					throw err
 				} else {
 					fs.writeFile( item.newFilename, processedContents );
-					fs.remove(item.oldFilename);
 				}
 			});
 		});
 	})
 	.then( () => {
+		fs.ensureDirSync(distDir + '/data');
+		fs.ensureDirSync(distDir + '/data/directories');
 		fs.writeFileSync(distDir + '/data/tags.json', JSON.stringify(tags));
 		fs.writeFileSync(distDir + '/data/taglist.json', JSON.stringify(Object.keys(tags)));
 		let directoryNames = Object.keys(directories);
@@ -152,4 +198,4 @@ copyPromise
 			fs.writeFileSync(distDir + `/data/directories/${name}.json`, JSON.stringify(directories[name]));
 		})
 	})
-	.catch(err => console.log(err));
+	.catch(err => console.error(err));
