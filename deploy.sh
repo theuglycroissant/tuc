@@ -9,11 +9,14 @@ echo "Building distribution folder"
 npm run build
 
 echo "Deploying dist folder to github repo"
+releaseDate=$(date)
+publishRepo=$(cat publish_repo)
+
 cd dist
 git init
 git add .
-releaseDate=$(date)
 git commit -m "Release: $releaseDate"
+git remote add origin "$publishRepo"
 git push -f origin master
 cd ..
 
