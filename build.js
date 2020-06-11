@@ -42,7 +42,7 @@ function addTags(object, link) {
 }
 
 function filenameToLink(filename){
-	return path.relative(distDir, filename);
+	return '/'+path.relative(distDir, filename);
 }
 
 function processDirectories(directories) {
@@ -117,10 +117,17 @@ if( buildConfig.options.convertImgs ) {
 	})
 	myGlob += "}";
 	maxSize = buildConfig.options.convertImgs.maxSize;
+	ignoreList = buildConfig.options.convertImgs.ignore
 	copyPromise
 		.then( () => glob(myGlob) )
 		.then( filelist => {
 			filelist.forEach(file => {
+				// Check that we aren't supposed to be ignoring this file.
+				relativeFile = '/'+path.relative(distDir, file);
+				if(typeof(ignoreList) !== 'undefined' && ignoreList.includes(relativeFile)) {
+					console.log(`Ignoring ${file}`);
+					return
+				}
 				// We add > so that we only downscale, never upscale
 				gm(file)
 					.resize(maxSize, maxSize, '>')

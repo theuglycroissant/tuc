@@ -3,6 +3,7 @@ module.exports.options = {
 	minifyJS: true,
 	// TODO : Add ignore GLOBs
 	convertImgs: {
+		ignore: ['/assets/the_ugly_croissant_long.png'],
 		extensions: ['jpg' ,'jpeg', 'JPG', 'JPEG', 'png', 'PNG'],
 		maxSize: '500'
 	}
