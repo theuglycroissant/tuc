@@ -13,10 +13,10 @@ git add .
 git commit -m "${commitMsg}"
 git push origin master
 
-echo "${STARTER}Building your site now, sit tight${NC}\n"
+printf "${STARTER}Building your site now, sit tight${NC}\n"
 npm run build
 
-echo "${STARTER}We're going live!!!${NC}\n"
+printf "${STARTER}We're going live!!!${NC}\n"
 releaseDate=$(date)
 publishRepo=$(cat publish_repo)
 
@@ -28,4 +28,4 @@ git remote add origin "$publishRepo"
 git push -f origin master
 cd ..
 
-echo "${STARTER}All done bud, see you soon!${NC}\n"
+printf "${STARTER}All done bud, see you soon!${NC}\n"
