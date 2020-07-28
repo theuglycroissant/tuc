@@ -8,9 +8,9 @@ categories:
   - title: Cookies
     image: /assets/cookies.jpeg
     link: /search.html?tag=cookies
-  - title: Bread
-    image: /assets/bread.jpeg
-    link: /search.html?tag=bread
   - title: Tarts
     image: /recipes/lemon_meringue_pie/square_pie.jpeg
     link: /search.html?tag=tart
+  - title: All
+    image: /assets/bread.jpeg
+    link: /search.html
